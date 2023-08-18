@@ -6,7 +6,7 @@
 /*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:19:42 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/18 16:00:38 by pviegas          ###   ########.fr       */
+/*   Updated: 2023/08/18 17:38:18 by pviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define SO_LONG_H
 
 # include <stdbool.h>
-# include "../minilibx/mlx.h"
 # include "../libft/libft.h"
+# include "../minilibx/mlx.h"
 
 # define CAT "./images/cat.xpm"
 # define SUSHI "./images/sushi.xpm"
@@ -69,8 +69,13 @@ void		get_map(t_game *game, int fd);
 void		check_map(t_game *game);
 void		check_char(t_game *game, char c, int line, int col);
 void		check_walls(t_game *game);
-void		check_path(t_game *game, int fd);
+void		check_path(t_game *game);
 int			floodfill(t_game *game);
 bool		fill(t_game *game, char c, int line, int col);
-void	free_map_floodfill(t_game *game);
+void		free_map_floodfill(t_game *game);
+void		player_position(t_game *game);
+void		start_game(t_game *game);
+int			key_handler(int keycode, t_game *game);
+int			close_window(t_game *game);
+
 #endif

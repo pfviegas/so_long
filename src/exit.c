@@ -6,7 +6,7 @@
 /*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:30:09 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/18 16:00:21 by pviegas          ###   ########.fr       */
+/*   Updated: 2023/08/18 17:29:00 by pviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	free_map_floodfill(t_game *game)
 	}
 	free(game->map_floodfill);
 }
-/*
+
 void	free_img(t_game *game)
 {
 	mlx_destroy_image(game->mlx, game->img.exit);
@@ -75,5 +75,4 @@ int	close_window(t_game *game)
 	free_map(game);
 	exit (0);
 }
-*/
 

@@ -6,7 +6,7 @@
 /*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:11:04 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/18 15:40:07 by pviegas          ###   ########.fr       */
+/*   Updated: 2023/08/18 17:38:31 by pviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,30 @@ static void	start_map(t_game *game)
 	game->move = 1;
 }
 
-static void	validations(t_game *game, int fd)
+static void	validations(t_game *game)
 {
 	check_map(game);
 	check_walls(game);
-	check_path(game, fd);
+	check_path(game);
+	if (game->column <= 0)
+		quit("Invalid number of columns.", game, 15);
+	if (game->line <= 0)
+		quit("Invalid number of lines.", game, 16);
 }
 
-/*
 void	start_game(t_game *game)
 {	
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, game->column * 64,
 			game->line * 64, "So_long");
+/*
 	mlx_hook(game->win, 02, 1L, key_handler, game);
 	mlx_hook(game->win, 17, 1L << 17, close_window, game);
 	put_images(game);
 	render_img(game);
 	mlx_loop(game->mlx);
+*/			
 }
-*/
 
 int	main(int argc, char **argv)
 {
@@ -62,7 +66,7 @@ int	main(int argc, char **argv)
 	close(fd_map);
 	fd_map = open(argv[1], O_RDONLY);
 	close(fd_map);
-	validations(&game, fd_map);
+	validations(&game);
 	
 	printf ("\ngame->collectibles = %d\n", game.collectibles);
 	printf ("game->player_x = %d\n", game.player_x);
@@ -75,14 +79,9 @@ int	main(int argc, char **argv)
 	printf ("game->end_game = %d\n", game.end_game);
 	printf ("game->move = %d\n\n", game.move);
 	
-/*	
-	fd = open(argv[1], O_RDONLY);
-	if (game.column <= 0)
-		quit("Invalid number of columns.", &game, 15);
-	if (game.line <= 0)
-		quit("Invalid number of lines.", &game, 16);
-	player_position(&game);
 	start_game(&game);
+/*	
+	player_position(&game);
 */
 	return(0);
 }

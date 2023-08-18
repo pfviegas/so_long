@@ -6,7 +6,7 @@
 /*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 13:35:05 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/18 16:22:06 by pviegas          ###   ########.fr       */
+/*   Updated: 2023/08/18 17:08:58 by pviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,26 @@ void	get_map(t_game *game, int fd)
 		free(content_line);
 	}
 	game->column = ft_strlen(game->map[i - 1]);
+}
+void	player_position(t_game *game)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	while (x < game->line)
+	{
+		while (y < game->column)
+		{
+			if (game->map[x][y] == 'P')
+			{
+				game->player_x = y;
+				game->player_y = x;
+			}
+			y++;
+		}
+		y = 0;
+		x++;
+	}
 }

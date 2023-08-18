@@ -6,7 +6,7 @@
 /*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:19:02 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/18 16:19:29 by pviegas          ###   ########.fr       */
+/*   Updated: 2023/08/18 16:52:20 by pviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,15 +97,12 @@ void	check_walls(t_game *game)
 	}
 }
 
-void	check_path(t_game *game, int fd)
+void	check_path(t_game *game)
 {
-	(void)fd;
-//	map_path(game, fd);
 	game->map_floodfill = game->map;
 	if (!floodfill(game))
 	{
 //		free_img(game);
-//		close(fd);
 		quit("Invalid path on the map", game, 14);
 	}
 	free_map_floodfill(game);
