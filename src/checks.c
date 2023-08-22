@@ -6,7 +6,7 @@
 /*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:19:02 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/22 18:26:15 by paulo            ###   ########.fr       */
+/*   Updated: 2023/08/22 18:45:00 by paulo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ void	check_path(t_game *game)
 	{
 		free_img(game);
 		free_map_floodfill(game);
-		quit("Invalid path on the map", game, 14);
+		quit("Invalid path on the map", game, 13);
 	}
 	free_map_floodfill(game);
 	printf("\n\n");

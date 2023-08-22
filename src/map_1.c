@@ -6,7 +6,7 @@
 /*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 13:35:05 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/22 18:25:11 by paulo            ###   ########.fr       */
+/*   Updated: 2023/08/22 18:42:23 by paulo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	get_lines(t_game *game, int fd)
 	return (lines);
 }
 
-// verifica se o mapa é retangular e armazena o mapa e o número de colunas
+// armazena o mapa e o número de colunas
 void	get_map(t_game *game, int fd)
 {
 	int		i;
@@ -48,16 +48,8 @@ void	get_map(t_game *game, int fd)
 		content_line = ft_get_next_line(fd);
 		game->map[i] = ft_strtrim(content_line, "\n");
 		game->map_floodfill[i] = ft_strtrim(content_line, "\n");
-		if (i > 0)
-		{
-			if (ft_strlen(game->map[i - 1]) != ft_strlen(game->map[i]))
-			{
-				free(content_line);
-				quit("The map must be rectangular.", game, 13);
-			}
-		}
-		i++;
 		free(content_line);
+		i++;
 	}
 	game->map[i] = NULL;
 	game->map_floodfill[i] = NULL;

@@ -6,7 +6,7 @@
 /*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:11:04 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/22 16:56:31 by paulo            ###   ########.fr       */
+/*   Updated: 2023/08/22 18:52:50 by paulo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ static void	validations(t_game *game)
 	check_walls(game);
 	check_path(game);
 	if (game->column <= 0)
-		quit("Invalid number of columns.", game, 15);
+		quit("Invalid number of columns.", game, 14);
 	if (game->line <= 0)
-		quit("Invalid number of lines.", game, 16);
+		quit("Invalid number of lines.", game, 15);
 }
 
 void	start_game(t_game *game)
