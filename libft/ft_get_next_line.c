@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_next_line.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 13:29:37 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/17 13:30:26 by pviegas          ###   ########.fr       */
+/*   Updated: 2023/08/22 12:13:57 by paulo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static char	*chk_line(char *line, int bytes)
 	if (line == NULL)
 	{
 		line = malloc(1);
-		if (line == NULL)
+		if (!line)
 			return (NULL);
 		*line = '\0';
 	}
@@ -65,7 +65,7 @@ static char	*read_line(int fd, char *line)
 	int		bytes_read;
 
 	str = (char *)malloc(BUFFER_SIZE + 1);
-	if (str == NULL)
+	if (!str)
 		return (0);
 	bytes_read = 1;
 	line = chk_line(line, bytes_read);
@@ -112,7 +112,7 @@ static char	*ft_next_line(char *line)
 		str_f = ft_strchr(line, '\n');
 	nl_pos = str_f - line + 1;
 	str = (char *)malloc(nl_pos + 1);
-	if (str == NULL)
+	if (!str)
 	{
 		free(line);
 		free(str);

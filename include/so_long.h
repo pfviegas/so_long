@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:19:42 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/18 17:38:18 by pviegas          ###   ########.fr       */
+/*   Updated: 2023/08/22 17:52:05 by paulo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,32 @@
 # include "../libft/libft.h"
 # include "../minilibx/mlx.h"
 
-# define CAT "./images/cat.xpm"
-# define SUSHI "./images/sushi.xpm"
-# define BOX "./images/exit.xpm"
 # define WALL "./images/wall.xpm"
+# define PLAYER "./images/cat.xpm"
 # define FLOOR "./images/floor.xpm"
-# define ON_BOX "./images/on_box.xpm"
+# define EXIT "./images/exit.xpm"
+# define COLLECTIBLE "./images/sushi.xpm"
+# define ON_EXIT "./images/on_box.xpm"
 
 # define W 119
 # define A 97
 # define S 115
 # define D 100
 # define ESC 65307
+# define ARROW_LEFT 65361
+# define ARROW_UP 65362
+# define ARROW_RIGHT 65363
+# define ARROW_DOWN 65364
+
 
 typedef struct s_img
 {
-	void	*collectible;
+	void	*wall;
 	void	*player;
 	void	*floor;
-	void	*wall;
 	void	*exit;
-	void	*on_box;
+	void	*collectible;
+	void	*on_exit;
 }	t_img;
 
 typedef struct s_game
@@ -72,10 +77,17 @@ void		check_walls(t_game *game);
 void		check_path(t_game *game);
 int			floodfill(t_game *game);
 bool		fill(t_game *game, char c, int line, int col);
+void		free_map(t_game *game);
 void		free_map_floodfill(t_game *game);
+void		free_img(t_game *game);
+void		map_malloc_path(t_game *game);
+void		valid_path(t_game *game, int fd);
 void		player_position(t_game *game);
 void		start_game(t_game *game);
-int			key_handler(int keycode, t_game *game);
+int			key_handling(int keycode, t_game *game);
 int			close_window(t_game *game);
+void		init_images(t_game *game);
+int			render_image(t_game *game);
+void		put_map(int x, int y, char c, t_game *game);
 
 #endif

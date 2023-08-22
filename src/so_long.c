@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:11:04 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/18 17:38:31 by pviegas          ###   ########.fr       */
+/*   Updated: 2023/08/22 16:56:31 by paulo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-static void	start_map(t_game *game)
+static void	init_var(t_game *game)
 {
 	game->collectibles = 0;
 	game->player_x = 0;
@@ -42,13 +42,11 @@ void	start_game(t_game *game)
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, game->column * 64,
 			game->line * 64, "So_long");
-/*
-	mlx_hook(game->win, 02, 1L, key_handler, game);
+	init_images(game);
+	render_image(game);
+	mlx_hook(game->win, 02, 1L, key_handling, game);
 	mlx_hook(game->win, 17, 1L << 17, close_window, game);
-	put_images(game);
-	render_img(game);
 	mlx_loop(game->mlx);
-*/			
 }
 
 int	main(int argc, char **argv)
@@ -57,7 +55,7 @@ int	main(int argc, char **argv)
 	int		fd_map;
 
 	check_args(&game, argc, argv);
-	start_map(&game);
+	init_var(&game);
 	fd_map = open(argv[1], O_RDONLY);
 	game.line = get_lines(&game, fd_map);
 	close(fd_map);
@@ -67,7 +65,7 @@ int	main(int argc, char **argv)
 	fd_map = open(argv[1], O_RDONLY);
 	close(fd_map);
 	validations(&game);
-	
+/*
 	printf ("\ngame->collectibles = %d\n", game.collectibles);
 	printf ("game->player_x = %d\n", game.player_x);
 	printf ("game->player_y = %d\n", game.player_y);
@@ -78,10 +76,8 @@ int	main(int argc, char **argv)
 	printf ("game->column = %d\n", game.column);
 	printf ("game->end_game = %d\n", game.end_game);
 	printf ("game->move = %d\n\n", game.move);
-	
+*/	
 	start_game(&game);
-/*	
 	player_position(&game);
-*/
 	return(0);
 }

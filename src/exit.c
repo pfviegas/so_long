@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:30:09 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/18 17:29:00 by pviegas          ###   ########.fr       */
+/*   Updated: 2023/08/22 17:25:28 by paulo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 void	quit(char *s, t_game *game, int exit_code)
 {
 	ft_printf("Error\n%s\n(%d)\n", s, exit_code);
-	(void) game;
-//	if (game->map[0])
-//		free_map(game);
+	if (game->map[0])
+		free_map(game);
 	exit(exit_code);
 }
 
+// liberta a memória alocada para o mapa
 void	free_map(t_game *game)
 {
 	int	i;
@@ -49,6 +49,7 @@ void	free_map_floodfill(t_game *game)
 	free(game->map_floodfill);
 }
 
+// liberta a memória alocada para as imagens e encerra o programa
 void	free_img(t_game *game)
 {
 	mlx_destroy_image(game->mlx, game->img.exit);
@@ -60,8 +61,8 @@ void	free_img(t_game *game)
 		mlx_destroy_image(game->mlx, game->img.floor);
 	if (game->img.wall)
 		mlx_destroy_image(game->mlx, game->img.wall);
-	if (game->img.on_box)
-		mlx_destroy_image(game->mlx, game->img.on_box);
+	if (game->img.on_exit)
+		mlx_destroy_image(game->mlx, game->img.on_exit);
 	mlx_destroy_display(game->mlx);
 	free_map(game);
 	free(game->mlx);
@@ -75,4 +76,3 @@ int	close_window(t_game *game)
 	free_map(game);
 	exit (0);
 }
-
