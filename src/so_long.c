@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:11:04 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/22 18:52:50 by paulo            ###   ########.fr       */
+/*   Updated: 2023/08/23 14:13:58 by pviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	validations(t_game *game)
 }
 
 void	start_game(t_game *game)
-{	
+{
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, game->column * 64,
 			game->line * 64, "So_long");
@@ -65,19 +65,7 @@ int	main(int argc, char **argv)
 	fd_map = open(argv[1], O_RDONLY);
 	close(fd_map);
 	validations(&game);
-/*
-	printf ("\ngame->collectibles = %d\n", game.collectibles);
-	printf ("game->player_x = %d\n", game.player_x);
-	printf ("game->player_y = %d\n", game.player_y);
-	printf ("game->player_on_box = %d\n", game.player_on_box);
-	printf ("game->exit = %d\n", game.exit);
-	printf ("game->player = %d\n", game.player);
-	printf ("game->line = %d\n", game.line);
-	printf ("game->column = %d\n", game.column);
-	printf ("game->end_game = %d\n", game.end_game);
-	printf ("game->move = %d\n\n", game.move);
-*/	
 	start_game(&game);
 	player_position(&game);
-	return(0);
+	return (0);
 }

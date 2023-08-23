@@ -6,7 +6,7 @@
 /*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:19:02 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/23 11:39:47 by pviegas          ###   ########.fr       */
+/*   Updated: 2023/08/23 14:13:22 by pviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,9 @@ void	check_map(t_game *game)
 	line = 0;
 	while (game->map[line] != NULL)
 	{
-		col = 0;
-		while (game->map[line][col])
-		{	
+		col = -1;
+		while (game->map[line][++col])
 			check_char(game, game->map[line][col], line, col);
-			col++;
-		}
 		line++;
 	}
 	if (line == col)
@@ -101,7 +98,7 @@ void	check_walls(t_game *game)
 }
 
 void	check_path(t_game *game)
-{	
+{
 	if (!floodfill(game))
 	{
 		free_img(game);
@@ -110,4 +107,3 @@ void	check_path(t_game *game)
 	}
 	free_map_floodfill(game);
 }
-

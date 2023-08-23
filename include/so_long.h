@@ -6,7 +6,7 @@
 /*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:19:42 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/23 12:53:24 by pviegas          ###   ########.fr       */
+/*   Updated: 2023/08/23 14:18:00 by pviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define PLAYER "./images/player.xpm"
 # define FLOOR "./images/floor.xpm"
 # define EXIT "./images/portal.xpm"
-# define COLLECTIBLE "./images/gold-bag.xpm"
+# define BAG "./images/gold-bag.xpm"
 # define ON_EXIT "./images/portal1.xpm"
 # define PORTAL "./images/portal2.xpm"
 

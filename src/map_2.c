@@ -6,7 +6,7 @@
 /*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 13:28:48 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/23 13:41:42 by pviegas          ###   ########.fr       */
+/*   Updated: 2023/08/23 14:17:52 by pviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	put_map(int x, int y, char c, t_game *game)
 {
-	int len;
+	int	len;
 
 	len = 64;
 	if (c == '1')
@@ -29,10 +29,11 @@ void	put_map(int x, int y, char c, t_game *game)
 	if (c == 'E')
 	{
 		if (game->collectibles == 0)
-			game->img.exit = mlx_xpm_file_to_image(game->mlx, PORTAL, &len, &len);
+			game->img.exit = mlx_xpm_file_to_image
+				(game->mlx, PORTAL, &len, &len);
 		mlx_put_image_to_window(game->mlx, game->win,
 			game->img.exit, x * 64, y * 64);
-	}	
+	}
 	if (c == 'C')
 		mlx_put_image_to_window(game->mlx, game->win,
 			game->img.collectible, x * 64, y * 64);
@@ -50,6 +51,6 @@ void	init_images(t_game *game)
 	game->img.player = mlx_xpm_file_to_image(game->mlx, PLAYER, &len, &len);
 	game->img.floor = mlx_xpm_file_to_image(game->mlx, FLOOR, &len, &len);
 	game->img.exit = mlx_xpm_file_to_image(game->mlx, EXIT, &len, &len);
-	game->img.collectible = mlx_xpm_file_to_image(game->mlx, COLLECTIBLE, &len, &len);
+	game->img.collectible = mlx_xpm_file_to_image(game->mlx, BAG, &len, &len);
 	game->img.on_exit = mlx_xpm_file_to_image(game->mlx, ON_EXIT, &len, &len);
 }
