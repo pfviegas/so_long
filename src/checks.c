@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:19:02 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/22 18:45:00 by paulo            ###   ########.fr       */
+/*   Updated: 2023/08/23 11:39:47 by pviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,20 +102,6 @@ void	check_walls(t_game *game)
 
 void	check_path(t_game *game)
 {	
-	int		l = 0;
-	int		c = 0;
-	
-	while (game->map[l])
-	{
-		while (game->map[l][c])
-		{
-			printf ("game->map[%d][%d]: %c \t game->map_floodfill[%d][%d]: %c\n", l, c, game->map[l][c], l, c, game->map_floodfill[l][c]);
-			c++;
-		}
-		c = 0;
-		l++;
-	}
-	
 	if (!floodfill(game))
 	{
 		free_img(game);
@@ -123,32 +109,5 @@ void	check_path(t_game *game)
 		quit("Invalid path on the map", game, 13);
 	}
 	free_map_floodfill(game);
-	printf("\n\n");
-	l = 0;
-	c = 0;
-	while (game->map[l])
-	{
-		while (game->map[l][c])
-		{
-			printf ("game->map[%d][%d]: %c \t game->map_floodfill[%d][%d]: %c\n", l, c, game->map[l][c], l, c, game->map_floodfill[l][c]);
-			c++;
-		}
-		c = 0;
-		l++;
-	}
-
 }
-/*
-void	valid_path(t_game *game, int fd)
-{
-	map_malloc_path(game, fd);
-	if (!floodfill(game))
-	{
-		ft_printf ("Error\nInvalid path to on the map\n");
-		free_img(game);
-		close(fd);
-	}
-	free_map_floodfill(game);
-}
-*/
 

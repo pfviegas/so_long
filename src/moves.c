@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:08:51 by paulo             #+#    #+#             */
-/*   Updated: 2023/08/21 16:29:04 by paulo            ###   ########.fr       */
+/*   Updated: 2023/08/23 13:47:00 by pviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	valid_move(t_game *game, int col, int line, int pressed_key)
 	if (game->map[line][col] == 'E' && game->collectibles == 0)
 	{
 		game->end_game = 1;
-		ft_printf("\n\nYOU WIN 🥳🏆\n\n");
+		ft_printf("\n\n\t\tCongrats!!!\tYOU WIN 🏆\n\n");
 		close_window(game);
 	}
 	if (pressed_key != W && pressed_key != ARROW_UP 

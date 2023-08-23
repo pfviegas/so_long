@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:19:42 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/22 17:52:05 by paulo            ###   ########.fr       */
+/*   Updated: 2023/08/23 12:53:24 by pviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@
 # include "../minilibx/mlx.h"
 
 # define WALL "./images/wall.xpm"
-# define PLAYER "./images/cat.xpm"
+# define PLAYER "./images/player.xpm"
 # define FLOOR "./images/floor.xpm"
-# define EXIT "./images/exit.xpm"
-# define COLLECTIBLE "./images/sushi.xpm"
-# define ON_EXIT "./images/on_box.xpm"
+# define EXIT "./images/portal.xpm"
+# define COLLECTIBLE "./images/gold-bag.xpm"
+# define ON_EXIT "./images/portal1.xpm"
+# define PORTAL "./images/portal2.xpm"
 
 # define W 119
 # define A 97
@@ -80,7 +81,6 @@ bool		fill(t_game *game, char c, int line, int col);
 void		free_map(t_game *game);
 void		free_map_floodfill(t_game *game);
 void		free_img(t_game *game);
-void		map_malloc_path(t_game *game);
 void		valid_path(t_game *game, int fd);
 void		player_position(t_game *game);
 void		start_game(t_game *game);

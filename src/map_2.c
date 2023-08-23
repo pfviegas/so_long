@@ -3,39 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   map_2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 13:28:48 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/22 18:03:54 by paulo            ###   ########.fr       */
+/*   Updated: 2023/08/23 13:41:42 by pviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	map_malloc_path(t_game *game)
-{
-//	int		i;
-//	char	*c;
-
-
-//	i = 0;
-//	game->map_floodfill = (char **)malloc(sizeof(char *) * (game->line + 1));
-//	if (!game->map_floodfill)
-//		free_img(game);
-	game->map_floodfill = game->map;
-/*
-	while (i < y)
-	{
-		c = get_next_line(fd);
-		game->map_floodfill[i] = ft_strtrim(c, "\n");
-		i++;
-		free(c);
-	}
-*/
-}
-
 void	put_map(int x, int y, char c, t_game *game)
 {
+	int len;
+
+	len = 64;
 	if (c == '1')
 		mlx_put_image_to_window(game->mlx, game->win,
 			game->img.wall, x * 64, y * 64);
@@ -46,8 +27,12 @@ void	put_map(int x, int y, char c, t_game *game)
 		mlx_put_image_to_window(game->mlx, game->win,
 			game->img.player, x * 64, y * 64);
 	if (c == 'E')
+	{
+		if (game->collectibles == 0)
+			game->img.exit = mlx_xpm_file_to_image(game->mlx, PORTAL, &len, &len);
 		mlx_put_image_to_window(game->mlx, game->win,
 			game->img.exit, x * 64, y * 64);
+	}	
 	if (c == 'C')
 		mlx_put_image_to_window(game->mlx, game->win,
 			game->img.collectible, x * 64, y * 64);
