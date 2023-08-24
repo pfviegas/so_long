@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:08:51 by paulo             #+#    #+#             */
-/*   Updated: 2023/08/23 14:11:09 by pviegas          ###   ########.fr       */
+/*   Updated: 2023/08/24 18:09:08 by paulo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
+// verifica se o jogador pode se mover para a nova posição, 
+// considerando as regras do jogo (paredes, coletáveis, saídas, ...)
 static int	valid_move(t_game *game, int col, int line, int pressed_key)
 {
 	game->temp = '0';
@@ -40,14 +42,17 @@ static int	valid_move(t_game *game, int col, int line, int pressed_key)
 		return (1);
 }
 
+// valida o movimento do jogador, atualiza as posições no mapa, 
+// gere a recolha dos coletáveis e a saída, e atualiza a 
+// renderização do mapa após cada movimento.
 static void	move_player(t_game *game, int col, int line, int pressed_key)
 {
 	int	valid;
-	int	tcol;
-	int	tline;
+	int	temp_col;
+	int	temp_line;
 
-	tcol = game->player_y;
-	tline = game->player_x;
+	temp_col = game->player_x;
+	temp_line = game->player_y;
 	valid = valid_move(game, col, line, pressed_key);
 	if (valid != -1)
 	{
@@ -57,15 +62,16 @@ static void	move_player(t_game *game, int col, int line, int pressed_key)
 			game->map[line][col] = 'P';
 		else
 			game->map[line][col] = 'B';
-		if (game->map[tcol][tline] != 'B')
-			game->map[tcol][tline] = '0';
+		if (game->map[temp_line][temp_col] != 'B')
+			game->map[temp_line][temp_col] = '0';
 		else
-			game->map[tcol][tline] = 'E';
-		ft_printf("Movements: %d\n", game->move++);
-		render_image(game);
+			game->map[temp_line][temp_col] = 'E';
+		ft_printf("Moves: %d\n", game->move++);
+		render_map(game);
 	}
 }
 
+// trata os movimentos do jogador
 int	key_handling(int keycode, t_game *game)
 {
 	int	col;

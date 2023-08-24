@@ -6,7 +6,7 @@
 /*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:30:09 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/22 17:25:28 by paulo            ###   ########.fr       */
+/*   Updated: 2023/08/24 17:27:16 by paulo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	free_map(t_game *game)
 	free(game->map);
 }
 
+// liberta a memória alocada para o mapa do floodfill
 void	free_map_floodfill(t_game *game)
 {
 	int	i;
@@ -69,6 +70,7 @@ void	free_img(t_game *game)
 	exit(0);
 }
 
+// liberta a memória alocada para as imagens e encerra o programa
 int	close_window(t_game *game)
 {
 	mlx_destroy_window(game->mlx, game->win);

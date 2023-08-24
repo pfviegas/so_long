@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:19:02 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/23 14:13:22 by pviegas          ###   ########.fr       */
+/*   Updated: 2023/08/24 15:00:38 by paulo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	check_map(t_game *game)
 		quit("Just one player per map.", game, 11);
 }
 
-// soma e verifica se os collectibles sao validos 
+// soma os collectibles e verifica se os caracteres sao validos 
 void	check_char(t_game *game, char c, int line, int col)
 {
 	if (c == 'C')
@@ -97,6 +97,7 @@ void	check_walls(t_game *game)
 	}
 }
 
+// verifica se o caminho do jogador é válido.
 void	check_path(t_game *game)
 {
 	if (!floodfill(game))

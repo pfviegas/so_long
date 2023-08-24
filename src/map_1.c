@@ -6,7 +6,7 @@
 /*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 13:35:05 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/22 18:42:23 by paulo            ###   ########.fr       */
+/*   Updated: 2023/08/24 17:48:54 by paulo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,67 +56,21 @@ void	get_map(t_game *game, int fd)
 	game->column = ft_strlen(game->map[i - 1]);
 }
 
-int	count_collectibles(t_game *game)
-{
-	int	x;
-	int	y;
-	int	c;
-
-	x = 0;
-	y = 0;
-	c = 0;
-	while (x < game->line)
-	{
-		while (y < game->column)
-		{
-			if (game->map[x][y] == 'C')
-			{
-				c++;
-			}
-			y++;
-		}
-		y = 0;
-		x++;
-	}
-	return (c);
-}
-
-// localiza a posição do jogador no mapa
-void	player_position(t_game *game)
-{
-	int	x;
-	int	y;
-
-	x = 0;
-	y = 0;
-	while (x < game->line)
-	{
-		while (y < game->column)
-		{
-			if (game->map[x][y] == 'P')
-			{
-				game->player_x = y;
-				game->player_y = x;
-			}
-			y++;
-		}
-		y = 0;
-		x++;
-	}
-}
-
-int	render_image(t_game *game)
+// renderiza o mapa
+int	render_map(t_game *game)
 {
 	int	y;
 	int	x;
+	int len;
 
+	len = 64;
 	y = 0;
 	while (y < game->line)
 	{
 		x = 0;
 		while (x < game->column)
 		{
-			put_map(x, y, game->map[y][x], game);
+			put_map(x, y, &len, game->map[y][x], game);
 			x++;
 		}
 		y++;

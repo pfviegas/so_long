@@ -3,20 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   map_2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 13:28:48 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/23 14:17:52 by pviegas          ###   ########.fr       */
+/*   Updated: 2023/08/24 17:51:26 by paulo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	put_map(int x, int y, char c, t_game *game)
+// coloca as imagens do jogo na janela de acordo com mapa
+void	put_map(int x, int y, int *len, char c, t_game *game)
 {
-	int	len;
-
-	len = 64;
 	if (c == '1')
 		mlx_put_image_to_window(game->mlx, game->win,
 			game->img.wall, x * 64, y * 64);
@@ -30,7 +28,7 @@ void	put_map(int x, int y, char c, t_game *game)
 	{
 		if (game->collectibles == 0)
 			game->img.exit = mlx_xpm_file_to_image
-				(game->mlx, PORTAL, &len, &len);
+				(game->mlx, PORTAL, len, len);
 		mlx_put_image_to_window(game->mlx, game->win,
 			game->img.exit, x * 64, y * 64);
 	}
@@ -42,6 +40,7 @@ void	put_map(int x, int y, char c, t_game *game)
 			game->img.on_exit, x * 64, y * 64);
 }
 
+// Inicializa as imagens do jogo
 void	init_images(t_game *game)
 {
 	int	len;

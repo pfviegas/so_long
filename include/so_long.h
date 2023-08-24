@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:19:42 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/23 14:18:00 by pviegas          ###   ########.fr       */
+/*   Updated: 2023/08/24 17:49:40 by paulo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,26 +68,23 @@ typedef struct s_game
 }	t_game;
 
 void		check_args(t_game *game, int argc, char **argv);
-void		quit(char *s, t_game *game, int exit_code);
-int			count_collectibles(t_game *game);
 int			get_lines(t_game *game, int fd);
 void		get_map(t_game *game, int fd);
 void		check_map(t_game *game);
 void		check_char(t_game *game, char c, int line, int col);
+void		quit(char *s, t_game *game, int exit_code);
 void		check_walls(t_game *game);
 void		check_path(t_game *game);
 int			floodfill(t_game *game);
 bool		fill(t_game *game, char c, int line, int col);
+void		free_img(t_game *game);
 void		free_map(t_game *game);
 void		free_map_floodfill(t_game *game);
-void		free_img(t_game *game);
-void		valid_path(t_game *game, int fd);
-void		player_position(t_game *game);
 void		start_game(t_game *game);
 int			key_handling(int keycode, t_game *game);
 int			close_window(t_game *game);
 void		init_images(t_game *game);
-int			render_image(t_game *game);
-void		put_map(int x, int y, char c, t_game *game);
+int			render_map(t_game *game);
+void		put_map(int x, int y, int *len, char c, t_game *game);
 
 #endif

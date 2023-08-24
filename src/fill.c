@@ -6,16 +6,18 @@
 /*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 15:51:26 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/22 17:36:22 by paulo            ###   ########.fr       */
+/*   Updated: 2023/08/24 15:45:40 by paulo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
+// verifica recursivamente se é possível alcançar todos os coletáveis e a saída
+// a partir da posição do jogador. 
 bool	fill(t_game *game, char c, int line, int col)
 {
 	static bool		exit = false;
-	static int		cols = 0;
+	static int		collectibles = 0;
 
 	if (line < 0 || col < 0 || line >= game->line || col >= game->column)
 		return (false);
@@ -26,15 +28,17 @@ bool	fill(t_game *game, char c, int line, int col)
 	else if (game->map_floodfill[line][col] == 'E')
 		exit = true;
 	if (game->map_floodfill[line][col] == 'C')
-		cols++;
+		collectibles++;
 	game->map_floodfill[line][col] = 'X';
 	fill(game, c, line + 1, col);
 	fill(game, c, line, col + 1);
 	fill(game, c, line - 1, col);
 	fill(game, c, line, col - 1);
-	return (cols == game->collectibles && exit);
+	return (collectibles == game->collectibles && exit);
 }
 
+// verifica se é possível alcançar todos os coletáveis a partir 
+// da posição do jogador. 
 int	floodfill(t_game *game)
 {
 	char	seed;
