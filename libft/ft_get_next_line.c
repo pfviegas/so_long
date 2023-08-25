@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_next_line.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 13:29:37 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/23 14:09:33 by pviegas          ###   ########.fr       */
+/*   Updated: 2023/08/25 11:46:19 by paulo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,5 +153,6 @@ char	*ft_get_next_line(int fd)
 		return (NULL);
 	}
 	next_line = ft_next_line(line);
+	free(line);
 	return (next_line);
 }

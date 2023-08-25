@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+         #
+#    By: paulo <paulo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 15:52:31 by jede-ara          #+#    #+#              #
-#    Updated: 2023/08/23 13:51:24 by pviegas          ###   ########.fr        #
+#    Updated: 2023/08/25 11:17:18 by paulo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ NAME = so_long
 
 # Compiler options
 CC 			= cc
-FLAGS		= -Wall -Werror -Wextra -g #-fsanitize=address
+FLAGS		= -Wall -Werror -Wextra -g -fsanitize=address
 MLXFLAGS	= -L ./minilibx -lmlx -Ilmlx -lXext -lX11
 
 # Paths
