@@ -6,7 +6,7 @@
 /*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:11:04 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/24 17:15:18 by paulo            ###   ########.fr       */
+/*   Updated: 2023/08/25 17:54:05 by paulo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 // inicializa as variáveis do jogo
 static void	init_var(t_game *game)
 {
+	game->map = NULL;
+	game->map_floodfill = NULL;
 	game->collectibles = 0;
 	game->player_x = 0;
 	game->player_y = 0;
-	game->player_on_box = 0;
+	game->player_on_exit = 0;
 	game->exit = 0;
 	game->player = 0;
 	game->line = 0;
@@ -48,7 +50,7 @@ void	start_game(t_game *game)
 	init_images(game);
 	render_map(game);
 	mlx_hook(game->win, 02, 1L, key_handling, game);
-	mlx_hook(game->win, 17, 1L << 17, close_window, game);
+	mlx_hook(game->win, 17, 1L << 17, exit_game, game);
 	mlx_loop(game->mlx);
 }
 
@@ -57,8 +59,8 @@ int	main(int argc, char **argv)
 	t_game	game;	
 	int		fd_map;
 
-	check_args(&game, argc, argv);
 	init_var(&game);
+	check_args(&game, argc, argv);
 	fd_map = open(argv[1], O_RDONLY);
 	game.line = get_lines(&game, fd_map);
 	close(fd_map);

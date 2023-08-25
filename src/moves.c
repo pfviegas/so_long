@@ -6,7 +6,7 @@
 /*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:08:51 by paulo             #+#    #+#             */
-/*   Updated: 2023/08/24 18:09:08 by paulo            ###   ########.fr       */
+/*   Updated: 2023/08/25 17:43:18 by paulo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	valid_move(t_game *game, int col, int line, int pressed_key)
 		game->collectibles--;
 	if (game->map[line][col] == 'E' && game->collectibles > 0)
 	{
-		game->player_on_box = 1;
+		game->player_on_exit = 1;
 		game->temp = 'B';
 		return (1);
 	}
@@ -31,7 +31,7 @@ static int	valid_move(t_game *game, int col, int line, int pressed_key)
 	{
 		game->end_game = 1;
 		ft_printf("\n\n\t\tCongrats!!!\tYOU WIN 🏆\n\n");
-		close_window(game);
+		exit_game(game);
 	}
 	if (pressed_key != W && pressed_key != ARROW_UP 
 		&& pressed_key != S && pressed_key != ARROW_DOWN
@@ -88,7 +88,7 @@ int	key_handling(int keycode, t_game *game)
 	else if (keycode == D || keycode == ARROW_RIGHT)
 		col++;
 	else if (keycode == ESC)
-		close_window(game);
+		exit_game(game);
 	if (game->end_game != 1)
 		move_player(game, col, line, keycode);
 	return (0);

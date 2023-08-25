@@ -6,7 +6,7 @@
 /*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 13:35:05 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/25 11:38:21 by paulo            ###   ########.fr       */
+/*   Updated: 2023/08/25 18:17:03 by paulo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ int	get_lines(t_game *game, int fd)
 		free(content_line);
 		content_line = ft_get_next_line(fd);
 	}
-	if (content_line)
-		free(content_line);
 	if (lines == 0)
 		quit("The file is empty or not exist.", game, 3);
 	return (lines);
@@ -49,8 +47,8 @@ void	get_map(t_game *game, int fd)
 		content_line = ft_get_next_line(fd);
 		if (ft_strlen(content_line) <= 2)
 		{
-			quit("Invalid map.", game, 16);
 			free(content_line);
+			quit("Invalid map.", game, 16);
 		}
 		game->map[i] = ft_strtrim(content_line, "\n");
 		game->map_floodfill[i] = ft_strtrim(content_line, "\n");
@@ -67,7 +65,7 @@ int	render_map(t_game *game)
 {
 	int	y;
 	int	x;
-	int len;
+	int	len;
 
 	len = 64;
 	y = 0;

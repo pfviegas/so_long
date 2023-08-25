@@ -6,7 +6,7 @@
 /*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:30:09 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/24 17:27:16 by paulo            ###   ########.fr       */
+/*   Updated: 2023/08/25 18:04:39 by paulo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@
 void	quit(char *s, t_game *game, int exit_code)
 {
 	ft_printf("Error\n%s\n(%d)\n", s, exit_code);
-	if (game->map[0])
+	if (game->map != NULL)
 		free_map(game);
+	if (game->map_floodfill != NULL)
+		free_map_floodfill(game);
 	exit(exit_code);
 }
 
@@ -51,9 +53,10 @@ void	free_map_floodfill(t_game *game)
 }
 
 // liberta a memória alocada para as imagens e encerra o programa
-void	free_img(t_game *game)
+int	exit_game(t_game *game)
 {
-	mlx_destroy_image(game->mlx, game->img.exit);
+	if (game->img.exit)
+		mlx_destroy_image(game->mlx, game->img.exit);
 	if (game->img.collectible)
 		mlx_destroy_image(game->mlx, game->img.collectible);
 	if (game->img.player)
@@ -64,17 +67,9 @@ void	free_img(t_game *game)
 		mlx_destroy_image(game->mlx, game->img.wall);
 	if (game->img.on_exit)
 		mlx_destroy_image(game->mlx, game->img.on_exit);
+	mlx_destroy_window(game->mlx, game->win);
 	mlx_destroy_display(game->mlx);
 	free_map(game);
 	free(game->mlx);
 	exit(0);
-}
-
-// liberta a memória alocada para as imagens e encerra o programa
-int	close_window(t_game *game)
-{
-	mlx_destroy_window(game->mlx, game->win);
-	free_img(game);
-	free_map(game);
-	exit (0);
 }

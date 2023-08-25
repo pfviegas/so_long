@@ -6,7 +6,7 @@
 /*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 13:29:37 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/25 11:46:19 by paulo            ###   ########.fr       */
+/*   Updated: 2023/08/25 16:03:40 by paulo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ static char	*chk_line(char *line, int bytes)
 static char	*read_line(int fd, char *line)
 {
 	char	*str;
+	char	*tmp;
 	int		bytes_read;
 
 	str = (char *)malloc(BUFFER_SIZE + 1);
@@ -79,7 +80,9 @@ static char	*read_line(int fd, char *line)
 			return (NULL);
 		}
 		str[bytes_read] = '\0';
-		line = ft_strjoin(line, str);
+		tmp = ft_strjoin(line, str);
+		free(line);
+		line = tmp;
 	}
 	free(str);
 	line = chk_line(line, bytes_read);
@@ -153,6 +156,5 @@ char	*ft_get_next_line(int fd)
 		return (NULL);
 	}
 	next_line = ft_next_line(line);
-	free(line);
 	return (next_line);
 }

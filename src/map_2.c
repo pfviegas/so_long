@@ -6,7 +6,7 @@
 /*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 13:28:48 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/24 17:51:26 by paulo            ###   ########.fr       */
+/*   Updated: 2023/08/25 18:10:55 by paulo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,11 @@ void	put_map(int x, int y, int *len, char c, t_game *game)
 	if (c == 'E')
 	{
 		if (game->collectibles == 0)
+		{
+			mlx_destroy_image(game->mlx, game->img.exit);
 			game->img.exit = mlx_xpm_file_to_image
 				(game->mlx, PORTAL, len, len);
+		}
 		mlx_put_image_to_window(game->mlx, game->win,
 			game->img.exit, x * 64, y * 64);
 	}
