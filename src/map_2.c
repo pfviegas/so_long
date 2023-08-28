@@ -3,44 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   map_2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 13:28:48 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/25 18:10:55 by paulo            ###   ########.fr       */
+/*   Updated: 2023/08/28 12:14:58 by pviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
 // coloca as imagens do jogo na janela de acordo com mapa
-void	put_map(int x, int y, int *len, char c, t_game *game)
+void	put_map(int x, int y, char c, t_game *game)
 {
+	int	s;
+
+	s = 64;
 	if (c == '1')
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->img.wall, x * 64, y * 64);
+		mlx_put_image_to_window
+		(game->mlx, game->win, game->img.wall, x * s, y * s);
 	if (c == '0')
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->img.floor, x * 64, y * 64);
+		mlx_put_image_to_window
+		(game->mlx, game->win, game->img.floor, x * s, y * s);
 	if (c == 'P')
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->img.player, x * 64, y * 64);
+		mlx_put_image_to_window
+		(game->mlx, game->win, game->img.player, x * s, y * s);
 	if (c == 'E')
-	{
-		if (game->collectibles == 0)
-		{
-			mlx_destroy_image(game->mlx, game->img.exit);
-			game->img.exit = mlx_xpm_file_to_image
-				(game->mlx, PORTAL, len, len);
-		}
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->img.exit, x * 64, y * 64);
-	}
+		mlx_put_image_to_window
+		(game->mlx, game->win, game->img.exit, x * s, y * s);
 	if (c == 'C')
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->img.collectible, x * 64, y * 64);
+		mlx_put_image_to_window
+		(game->mlx, game->win, game->img.collectible, x * s, y * s);
 	if (c == 'B')
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->img.on_exit, x * 64, y * 64);
+		mlx_put_image_to_window
+		(game->mlx, game->win, game->img.on_exit, x * s, y * s);
 }
 
 // Inicializa as imagens do jogo

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:30:09 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/25 18:04:39 by paulo            ###   ########.fr       */
+/*   Updated: 2023/08/28 11:49:05 by pviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	free_map_floodfill(t_game *game)
 {
 	int	i;
 
+	if (!game->map_floodfill)
+		return ;
 	i = 0;
 	while (game->map_floodfill[i])
 	{
@@ -50,6 +52,7 @@ void	free_map_floodfill(t_game *game)
 		i++;
 	}
 	free(game->map_floodfill);
+	game->map_floodfill = NULL;
 }
 
 // liberta a memória alocada para as imagens e encerra o programa
@@ -70,6 +73,7 @@ int	exit_game(t_game *game)
 	mlx_destroy_window(game->mlx, game->win);
 	mlx_destroy_display(game->mlx);
 	free_map(game);
+	free_map_floodfill(game);
 	free(game->mlx);
 	exit(0);
 }

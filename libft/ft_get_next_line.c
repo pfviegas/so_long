@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_next_line.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 13:29:37 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/25 16:03:40 by paulo            ###   ########.fr       */
+/*   Updated: 2023/08/28 13:23:38 by pviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ static char	*read_line(int fd, char *line)
 		if (bytes_read == -1)
 		{
 			free(str);
-			free(line);
 			return (NULL);
 		}
 		str[bytes_read] = '\0';
@@ -152,9 +151,9 @@ char	*ft_get_next_line(int fd)
 		return (NULL);
 	line = read_line(fd, line);
 	if (!line)
-	{
 		return (NULL);
-	}
 	next_line = ft_next_line(line);
+	if (!next_line)
+		line = NULL;
 	return (next_line);
 }

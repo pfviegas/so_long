@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_1.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 13:35:05 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/25 18:17:03 by paulo            ###   ########.fr       */
+/*   Updated: 2023/08/28 12:15:34 by pviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,16 @@ void	get_map(t_game *game, int fd)
 	game->map_floodfill = (char **)malloc(sizeof(char *) * (game->line + 1));
 	if (!game->map || !game->map_floodfill)
 		quit("Malloc error.", game, 4);
+	printf("%d\n", game->line);
 	while (i < game->line)
 	{
 		content_line = ft_get_next_line(fd);
-		if (ft_strlen(content_line) <= 2)
-		{
-			free(content_line);
-			quit("Invalid map.", game, 16);
-		}
 		game->map[i] = ft_strtrim(content_line, "\n");
 		game->map_floodfill[i] = ft_strtrim(content_line, "\n");
 		free(content_line);
 		i++;
 	}
+	ft_get_next_line(fd);
 	game->map[i] = NULL;
 	game->map_floodfill[i] = NULL;
 	game->column = ft_strlen(game->map[i - 1]);
@@ -65,16 +62,21 @@ int	render_map(t_game *game)
 {
 	int	y;
 	int	x;
-	int	len;
+	int	s;
 
-	len = 64;
+	s = 64;
+	if (game->collectibles == 0)
+	{
+		mlx_destroy_image(game->mlx, game->img.exit);
+		game->img.exit = mlx_xpm_file_to_image(game->mlx, PORTAL, &s, &s);
+	}
 	y = 0;
 	while (y < game->line)
 	{
 		x = 0;
 		while (x < game->column)
 		{
-			put_map(x, y, &len, game->map[y][x], game);
+			put_map(x, y, game->map[y][x], game);
 			x++;
 		}
 		y++;

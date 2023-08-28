@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:19:42 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/25 17:55:03 by paulo            ###   ########.fr       */
+/*   Updated: 2023/08/28 12:05:53 by pviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,6 @@ void		start_game(t_game *game);
 int			key_handling(int keycode, t_game *game);
 void		init_images(t_game *game);
 int			render_map(t_game *game);
-void		put_map(int x, int y, int *len, char c, t_game *game);
+void		put_map(int x, int y, char c, t_game *game);
 
 #endif
