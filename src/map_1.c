@@ -6,7 +6,7 @@
 /*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 13:35:05 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/28 12:15:34 by pviegas          ###   ########.fr       */
+/*   Updated: 2023/08/28 14:02:29 by pviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	get_map(t_game *game, int fd)
 	game->map_floodfill = (char **)malloc(sizeof(char *) * (game->line + 1));
 	if (!game->map || !game->map_floodfill)
 		quit("Malloc error.", game, 4);
-	printf("%d\n", game->line);
 	while (i < game->line)
 	{
 		content_line = ft_get_next_line(fd);

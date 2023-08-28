@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:11:04 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/25 17:54:05 by paulo            ###   ########.fr       */
+/*   Updated: 2023/08/28 14:02:45 by pviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,7 @@ int	main(int argc, char **argv)
 	fd_map = open(argv[1], O_RDONLY);
 	get_map(&game, fd_map);
 	close(fd_map);
-	fd_map = open(argv[1], O_RDONLY);
-	close(fd_map);
+
 	validations(&game);
 	start_game(&game);
 	return (0);
