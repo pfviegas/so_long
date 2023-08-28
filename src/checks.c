@@ -6,7 +6,7 @@
 /*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:19:02 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/28 11:45:45 by pviegas          ###   ########.fr       */
+/*   Updated: 2023/08/28 15:00:58 by pviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ void	check_path(t_game *game)
 {
 	if (!floodfill(game))
 	{
-		exit_game(game);
 		quit("Invalid path on the map", game, 13);
 	}
 	free_map_floodfill(game);

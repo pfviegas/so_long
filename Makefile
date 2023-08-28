@@ -6,7 +6,7 @@
 #    By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 15:52:31 by jede-ara          #+#    #+#              #
-#    Updated: 2023/08/28 13:26:53 by pviegas          ###   ########.fr        #
+#    Updated: 2023/08/28 14:59:14 by pviegas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ NAME = so_long
 
 # Compiler options
 CC 			= cc
-FLAGS		= -Wall -Werror -Wextra -g -fsanitize=address
+FLAGS		= -Wall -Werror -Wextra -g #-fsanitize=address
 MLXFLAGS	= -L ./minilibx -lmlx -Ilmlx -lXext -lX11
 
 # Paths
