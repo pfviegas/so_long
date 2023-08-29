@@ -6,7 +6,7 @@
 /*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:30:09 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/28 15:10:29 by pviegas          ###   ########.fr       */
+/*   Updated: 2023/08/29 14:12:45 by pviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	free_map(t_game *game)
 {
 	int	i;
 
+	if (!game->map)
+		return ;
 	i = 0;
 	while (game->map[i])
 	{
@@ -36,6 +38,7 @@ void	free_map(t_game *game)
 		i++;
 	}
 	free(game->map);
+	game->map = NULL;
 }
 
 // liberta a memória alocada para o mapa do floodfill

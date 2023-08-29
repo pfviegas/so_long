@@ -6,7 +6,7 @@
 /*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 13:35:05 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/28 14:02:29 by pviegas          ###   ########.fr       */
+/*   Updated: 2023/08/29 14:37:53 by pviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,17 @@ int	get_lines(t_game *game, int fd)
 	while (content_line)
 	{
 		lines++;
+		if (*content_line == '\n')
+		{
+			free(content_line);
+			quit("Invalid map.", game, 16);
+		}
 		free(content_line);
 		content_line = ft_get_next_line(fd);
 	}
 	if (lines == 0)
 		quit("The file is empty or not exist.", game, 3);
+	free(content_line);
 	return (lines);
 }
 
