@@ -6,7 +6,7 @@
 /*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:08:51 by paulo             #+#    #+#             */
-/*   Updated: 2023/08/28 14:56:06 by pviegas          ###   ########.fr       */
+/*   Updated: 2023/08/29 10:30:02 by pviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	valid_move(t_game *game, int col, int line, int pressed_key)
 	if (game->map[line][col] == 'E' && game->collectibles > 0)
 	{
 		game->player_on_exit = 1;
-		game->temp = 'B';
+		game->temp = 'O';
 		return (1);
 	}
 	if (game->map[line][col] == 'E' && game->collectibles == 0)
@@ -58,11 +58,11 @@ static void	move_player(t_game *game, int col, int line, int pressed_key)
 	{
 		game->player_y = line;
 		game->player_x = col;
-		if (game->temp != 'B')
+		if (game->temp != 'O')
 			game->map[line][col] = 'P';
 		else
-			game->map[line][col] = 'B';
-		if (game->map[temp_line][temp_col] != 'B')
+			game->map[line][col] = 'O';
+		if (game->map[temp_line][temp_col] != 'O')
 			game->map[temp_line][temp_col] = '0';
 		else
 			game->map[temp_line][temp_col] = 'E';

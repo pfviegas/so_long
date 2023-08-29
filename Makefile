@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/01/23 15:52:31 by jede-ara          #+#    #+#              #
-#    Updated: 2023/08/28 14:59:14 by pviegas          ###   ########.fr        #
+#    Created: 2023/08/29 13:00:19 by pviegas           #+#    #+#              #
+#    Updated: 2023/08/29 13:00:34 by pviegas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ NAME = so_long
 
 # Compiler options
 CC 			= cc
-FLAGS		= -Wall -Werror -Wextra -g #-fsanitize=address
+FLAGS		= -Wall -Werror -Wextra -g -fsanitize=address
 MLXFLAGS	= -L ./minilibx -lmlx -Ilmlx -lXext -lX11
 
 # Paths

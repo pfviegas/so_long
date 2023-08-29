@@ -6,7 +6,7 @@
 /*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 13:28:48 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/28 12:14:58 by pviegas          ###   ########.fr       */
+/*   Updated: 2023/08/29 10:29:38 by pviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	put_map(int x, int y, char c, t_game *game)
 	if (c == 'C')
 		mlx_put_image_to_window
 		(game->mlx, game->win, game->img.collectible, x * s, y * s);
-	if (c == 'B')
+	if (c == 'O')
 		mlx_put_image_to_window
 		(game->mlx, game->win, game->img.on_exit, x * s, y * s);
 }
