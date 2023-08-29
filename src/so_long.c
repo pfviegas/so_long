@@ -6,7 +6,7 @@
 /*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:11:04 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/28 15:47:28 by pviegas          ###   ########.fr       */
+/*   Updated: 2023/08/29 10:15:10 by pviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ void	start_game(t_game *game)
 			game->line * 64, "So_long");
 	init_images(game);
 	render_map(game);
-	mlx_hook(game->win, 02, 1L<<0, key_handling, game);
-	mlx_hook(game->win, 17, 1L<<17, exit_game, game);
+	mlx_hook(game->win, 02, 1L << 0, key_handling, game);
+	mlx_hook(game->win, 17, 1L << 17, exit_game, game);
 	mlx_loop(game->mlx);
 }
 
