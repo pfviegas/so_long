@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:19:42 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/29 13:01:19 by pviegas          ###   ########.fr       */
+/*   Updated: 2023/08/30 17:56:01 by paulo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../libft/libft.h"
 # include "../minilibx/mlx.h"
 
+// images
 # define WALL "./images/wall.xpm"
 # define PLAYER "./images/player.xpm"
 # define FLOOR "./images/floor.xpm"
@@ -25,6 +26,7 @@
 # define ON_EXIT "./images/portal1.xpm"
 # define PORTAL "./images/portal2.xpm"
 
+// keycodes
 # define W 119
 # define A 97
 # define S 115
