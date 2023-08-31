@@ -6,7 +6,7 @@
 /*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:11:04 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/30 18:11:14 by paulo            ###   ########.fr       */
+/*   Updated: 2023/08/31 12:07:46 by paulo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static void	init_var(t_game *game)
 	game->column = 0;
 	game->end_game = 0;
 	game->move = 1;
+	game->anim_speed = 0;
+	game->frame = 1;
 	game->img.wall = NULL;
 	game->img.player = NULL;
 	game->img.floor = NULL;
@@ -58,6 +60,7 @@ void	start_game(t_game *game)
 	render_map(game);
 	mlx_hook(game->win, 02, 1L << 0, key_handling, game);
 	mlx_hook(game->win, 17, 1L << 17, exit_game, game);
+	mlx_loop_hook(game->mlx, &animation, game);
 	mlx_loop(game->mlx);
 }
 

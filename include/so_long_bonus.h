@@ -6,7 +6,7 @@
 /*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:19:42 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/30 18:05:21 by paulo            ###   ########.fr       */
+/*   Updated: 2023/08/31 12:10:31 by paulo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,14 @@
 # include "../libft/libft.h"
 # include "../minilibx/mlx.h"
 
+// game font colors
+# define YELLOW 	0xF7FF00
+# define RED 		0xFF0000
+# define GREEN 		0x00FF00
+# define BLUE 		0x0000FF
+# define WHITE 		0xFFFFFF
+# define BLACK 		0x000000
+
 // images
 # define WALL "./images/wall.xpm"
 # define PLAYER "./images/player.xpm"
@@ -26,6 +34,11 @@
 # define ON_EXIT "./images/portal1.xpm"
 # define PORTAL "./images/portal2.xpm"
 # define DANGER "./images/fire.xpm"
+# define DANGER1 "./images/fire_20.xpm"
+# define DANGER2 "./images/fire_40.xpm"
+# define DANGER3 "./images/fire_60.xpm"
+# define DANGER4 "./images/fire_80.xpm"
+# define DANGER5 "./images/fire_100.xpm"
 
 // keycodes
 # define W 119
@@ -37,6 +50,8 @@
 # define ARROW_UP 65362
 # define ARROW_RIGHT 65363
 # define ARROW_DOWN 65364
+
+# define ANIMATION_SPEED 1000
 
 typedef struct s_img
 {
@@ -69,6 +84,8 @@ typedef struct s_game
 	int		column;
 	int		end_game;
 	int		move;
+	int		anim_speed;
+	int		frame;
 }	t_game;
 
 void		check_args(t_game *game, int argc, char **argv);
@@ -89,5 +106,8 @@ int			key_handling(int keycode, t_game *game);
 void		init_images(t_game *game);
 int			render_map(t_game *game);
 void		put_map(int x, int y, char c, t_game *game);
+void		ft_print_moves(t_game *game);
+int			animation(t_game *game);
+void		animate(t_game *game);
 
 #endif

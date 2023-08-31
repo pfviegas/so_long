@@ -6,7 +6,7 @@
 /*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 13:28:48 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/30 18:14:12 by paulo            ###   ########.fr       */
+/*   Updated: 2023/08/31 10:43:58 by paulo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,16 @@ void	init_images(t_game *game)
 	game->img.collectible = mlx_xpm_file_to_image(game->mlx, BAG, &len, &len);
 	game->img.on_exit = mlx_xpm_file_to_image(game->mlx, ON_EXIT, &len, &len);
 	game->img.danger = mlx_xpm_file_to_image(game->mlx, DANGER, &len, &len);
+}
+
+void	ft_print_moves(t_game *game)
+{
+	char	*text;
+	char	*temp;
+
+	temp = ft_itoa(game->move - 1);
+	text = ft_strjoin("Moves: ", temp);
+	free(temp);
+	mlx_string_put(game->mlx, game->win, 20, 20, WHITE, text);
+	free(text);
 }

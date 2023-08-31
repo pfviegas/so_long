@@ -6,7 +6,7 @@
 /*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:08:51 by paulo             #+#    #+#             */
-/*   Updated: 2023/08/30 18:18:19 by paulo            ###   ########.fr       */
+/*   Updated: 2023/08/31 10:44:46 by paulo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,14 @@ static int	valid_move(t_game *game, int col, int line, int pressed_key)
 	if (game->map[line][col] == 'E' && game->collectibles == 0)
 	{
 		game->end_game = 1;
+		game->move++;
 		ft_printf("\n\n\t\tCongrats!!!\tYOU WIN (*_*)\n\n");
 		exit_game(game);
 	}
 		if (game->map[line][col] == 'D')
 	{
 		game->end_game = 1;
+		game->move++;
 		ft_printf("\n\n\t\tSorry!!!\tYOU LOSE (x_x) \n\n");
 		exit_game(game);
 	}
@@ -72,7 +74,7 @@ static void	move_player(t_game *game, int col, int line, int pressed_key)
 			game->map[temp_line][temp_col] = '0';
 		else
 			game->map[temp_line][temp_col] = 'E';
-		ft_printf("Moves: %d\n", game->move++);
+		game->move++;
 		render_map(game);
 	}
 }
