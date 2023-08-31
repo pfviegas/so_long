@@ -6,7 +6,7 @@
 /*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:08:51 by paulo             #+#    #+#             */
-/*   Updated: 2023/08/31 13:34:01 by paulo            ###   ########.fr       */
+/*   Updated: 2023/08/31 13:38:07 by paulo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	is_finish(t_game *game, int col, int line)
 		exit_game(game);
 	}
 }
-	
+
 // verifica se o jogador pode se mover para a nova posição, 
 // considerando as regras do jogo (paredes, coletáveis, saídas, ...)
 static int	valid_move(t_game *game, int col, int line, int pressed_key)
@@ -42,18 +42,6 @@ static int	valid_move(t_game *game, int col, int line, int pressed_key)
 		return (1);
 	}
 	is_finish(game, col, line);
-/*
-	if (game->map[line][col] == 'E' && game->collectibles == 0)
-	{
-		ft_printf("\n\n\t\tCongrats!!!\tYOU WIN (*_*)\n\n");
-		exit_game(game);
-	}
-	if (game->map[line][col] == 'D')
-	{
-		ft_printf("\n\n\t\tSorry!!!\tYOU LOSE (x_x) \n\n");
-		exit_game(game);
-	}
-*/
 	if (pressed_key != W && pressed_key != ARROW_UP 
 		&& pressed_key != S && pressed_key != ARROW_DOWN
 		&& pressed_key != A && pressed_key != ARROW_LEFT
