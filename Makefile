@@ -6,7 +6,7 @@
 #    By: paulo <paulo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 15:52:31 by jede-ara          #+#    #+#              #
-#    Updated: 2023/08/31 13:35:00 by paulo            ###   ########.fr        #
+#    Updated: 2023/08/31 13:40:20 by paulo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ NAME_BONUS = so_long_bonus
 
 # Compiler options
 CC 			= cc
-FLAGS		= -Wall -Werror -Wextra -g #-fsanitize=address
+FLAGS		= -Wall -Werror -Wextra -g -fsanitize=address
 MLXFLAGS	= -L ./minilibx -lmlx -Ilmlx -lXext -lX11
 
 # Paths
