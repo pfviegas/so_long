@@ -6,14 +6,15 @@
 /*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:19:42 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/31 12:10:31 by paulo            ###   ########.fr       */
+/*   Updated: 2023/08/31 13:15:48 by paulo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include <stdbool.h>
+# include <unistd.h>
 # include "../libft/libft.h"
 # include "../minilibx/mlx.h"
 
@@ -51,7 +52,7 @@
 # define ARROW_RIGHT 65363
 # define ARROW_DOWN 65364
 
-# define ANIMATION_SPEED 1000
+# define ANIMATION_SPEED 25
 
 typedef struct s_img
 {
@@ -108,6 +109,5 @@ int			render_map(t_game *game);
 void		put_map(int x, int y, char c, t_game *game);
 void		ft_print_moves(t_game *game);
 int			animation(t_game *game);
-void		animate(t_game *game);
 
 #endif
