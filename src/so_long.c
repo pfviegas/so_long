@@ -6,7 +6,7 @@
 /*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:11:04 by pviegas           #+#    #+#             */
-/*   Updated: 2023/09/01 11:05:43 by pviegas          ###   ########.fr       */
+/*   Updated: 2023/09/01 11:42:52 by pviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	init_var(t_game *game)
 // verifica se as imagens existem
 static void	check_images(t_game *game)
 {
-	const char *images[7] = {
+	const char	*images[7] = {
 		"./images/wall.xpm",
 		"./images/player.xpm",
 		"./images/floor.xpm",
@@ -41,9 +41,9 @@ static void	check_images(t_game *game)
 		"./images/portal1.xpm",
 		"./images/portal2.xpm"
 	};
-	int	fd;
-	int	i;
-	
+	int			fd;
+	int			i;
+
 	i = 0;
 	while (i <= 6)
 	{
