@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: paulo <paulo@student.42.fr>                +#+  +:+       +#+         #
+#    By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/31 15:37:32 by paulo             #+#    #+#              #
-#    Updated: 2023/08/31 15:37:41 by paulo            ###   ########.fr        #
+#    Updated: 2023/09/01 11:01:53 by pviegas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ NAME_BONUS = so_long_bonus
 
 # Compiler options
 CC 			= cc
-FLAGS		= -Wall -Werror -Wextra -g -fsanitize=address
+FLAGS		= -Wall -Werror -Wextra -g #-fsanitize=address
 MLXFLAGS	= -L ./minilibx -lmlx -Ilmlx -lXext -lX11
 
 # Paths

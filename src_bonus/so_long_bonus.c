@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:11:04 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/31 12:07:46 by paulo            ###   ########.fr       */
+/*   Updated: 2023/09/01 11:21:04 by pviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,29 @@ static void	init_var(t_game *game)
 	game->img.collectible = NULL;
 	game->img.on_exit = NULL;
 	game->img.danger = NULL;
+}
+
+// verifica se as imagens existem
+static void	check_images(t_game *game)
+{
+	const char *images[13] = {
+		"./images/wall.xpm", "./images/player.xpm", "./images/floor.xpm",
+		"./images/portal.xpm", "./images/gold-bag.xpm",
+		"./images/portal1.xpm", "./images/portal2.xpm", "./images/fire.xpm",
+		"./images/fire_20.xpm", "./images/fire_40.xpm", "./images/fire_60.xpm",
+		"./images/fire_80.xpm", "./images/fire_100.xpm" };
+	int	fd;
+	int	i;
+	
+	i = 0;
+	while (i <= 12)
+	{
+		fd = open(images[i], O_RDONLY);
+		close(fd);
+		if (fd == -1)
+			quit("Image missing.", game, 17);
+		i++;
+	}
 }
 
 // valida o mapa, as paredes e o caminho
@@ -70,6 +93,7 @@ int	main(int argc, char **argv)
 	int		fd_map;
 
 	init_var(&game);
+	check_images(&game);
 	check_args(&game, argc, argv);
 	fd_map = open(argv[1], O_RDONLY);
 	game.line = get_lines(&game, fd_map);

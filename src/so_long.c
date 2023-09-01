@@ -6,7 +6,7 @@
 /*   By: pviegas <pviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:11:04 by pviegas           #+#    #+#             */
-/*   Updated: 2023/08/29 13:39:02 by pviegas          ###   ########.fr       */
+/*   Updated: 2023/09/01 11:05:43 by pviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,32 @@ static void	init_var(t_game *game)
 	game->column = 0;
 	game->end_game = 0;
 	game->move = 1;
+}
+
+// verifica se as imagens existem
+static void	check_images(t_game *game)
+{
+	const char *images[7] = {
+		"./images/wall.xpm",
+		"./images/player.xpm",
+		"./images/floor.xpm",
+		"./images/portal.xpm",
+		"./images/gold-bag.xpm",
+		"./images/portal1.xpm",
+		"./images/portal2.xpm"
+	};
+	int	fd;
+	int	i;
+	
+	i = 0;
+	while (i <= 6)
+	{
+		fd = open(images[i], O_RDONLY);
+		close(fd);
+		if (fd == -1)
+			quit("Image missing.", game, 17);
+		i++;
+	}
 }
 
 // valida o mapa, as paredes e o caminho
@@ -60,6 +86,7 @@ int	main(int argc, char **argv)
 	int		fd_map;
 
 	init_var(&game);
+	check_images(&game);
 	check_args(&game, argc, argv);
 	fd_map = open(argv[1], O_RDONLY);
 	game.line = get_lines(&game, fd_map);
